@@ -1,0 +1,265 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# use this to import the tool\n",
+    "# feel free to add to the tool\n",
+    "import sys\n",
+    "import pandas as pd\n",
+    "import os\n",
+    "assert \"disaster-tweet-nlp\" in os.path.abspath(os.curdir)\n",
+    "while os.path.abspath(os.curdir).split(\"\\\\\")[-1] != \"disaster-tweet-nlp\":\n",
+    "    os.chdir(\"..\")\n",
+    "from tools.tweetTool import tweeterTool"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "3.5.3 |Continuum Analytics, Inc.| (default, May 15 2017, 10:43:23) [MSC v.1900 64 bit (AMD64)]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(sys.version)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\Grego\\disaster-tweet-nlp\n"
+     ]
+    }
+   ],
+   "source": [
+    "tt = tweeterTool()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tt.get_tweet(53)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style>\n",
+       "    .dataframe thead tr:only-child th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: left;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>id</th>\n",
+       "      <th>keyword</th>\n",
+       "      <th>location</th>\n",
+       "      <th>text</th>\n",
+       "      <th>target</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>35</th>\n",
+       "      <td>53</td>\n",
+       "      <td>ablaze</td>\n",
+       "      <td>London, UK</td>\n",
+       "      <td>On plus side LOOK AT THE SKY LAST NIGHT IT WAS...</td>\n",
+       "      <td>0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "    id keyword    location                                               text  \\\n",
+       "35  53  ablaze  London, UK  On plus side LOOK AT THE SKY LAST NIGHT IT WAS...   \n",
+       "\n",
+       "    target  \n",
+       "35       0  "
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tt.tweet"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tt.get_locations()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([nan, 'Birmingham', 'Est. September 2012 - Bristol', ...,\n",
+       "       'Vancouver, Canada', 'London ', 'Lincoln'], dtype=object)"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tt.locations"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tt.get_keywords()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([nan, 'ablaze', 'accident', 'aftershock', 'airplane%20accident',\n",
+       "       'ambulance', 'annihilated', 'annihilation', 'apocalypse',\n",
+       "       'armageddon', 'army', 'arson', 'arsonist', 'attack', 'attacked',\n",
+       "       'avalanche', 'battle', 'bioterror', 'bioterrorism', 'blaze',\n",
+       "       'blazing', 'bleeding', 'blew%20up', 'blight', 'blizzard', 'blood',\n",
+       "       'bloody', 'blown%20up', 'body%20bag', 'body%20bagging',\n",
+       "       'body%20bags', 'bomb', 'bombed', 'bombing', 'bridge%20collapse',\n",
+       "       'buildings%20burning', 'buildings%20on%20fire', 'burned', 'burning',\n",
+       "       'burning%20buildings', 'bush%20fires', 'casualties', 'casualty',\n",
+       "       'catastrophe', 'catastrophic', 'chemical%20emergency',\n",
+       "       'cliff%20fall', 'collapse', 'collapsed', 'collide', 'collided',\n",
+       "       'collision', 'crash', 'crashed', 'crush', 'crushed', 'curfew',\n",
+       "       'cyclone', 'damage', 'danger', 'dead', 'death', 'deaths', 'debris',\n",
+       "       'deluge', 'deluged', 'demolish', 'demolished', 'demolition',\n",
+       "       'derail', 'derailed', 'derailment', 'desolate', 'desolation',\n",
+       "       'destroy', 'destroyed', 'destruction', 'detonate', 'detonation',\n",
+       "       'devastated', 'devastation', 'disaster', 'displaced', 'drought',\n",
+       "       'drown', 'drowned', 'drowning', 'dust%20storm', 'earthquake',\n",
+       "       'electrocute', 'electrocuted', 'emergency', 'emergency%20plan',\n",
+       "       'emergency%20services', 'engulfed', 'epicentre', 'evacuate',\n",
+       "       'evacuated', 'evacuation', 'explode', 'exploded', 'explosion',\n",
+       "       'eyewitness', 'famine', 'fatal', 'fatalities', 'fatality', 'fear',\n",
+       "       'fire', 'fire%20truck', 'first%20responders', 'flames', 'flattened',\n",
+       "       'flood', 'flooding', 'floods', 'forest%20fire', 'forest%20fires',\n",
+       "       'hail', 'hailstorm', 'harm', 'hazard', 'hazardous', 'heat%20wave',\n",
+       "       'hellfire', 'hijack', 'hijacker', 'hijacking', 'hostage',\n",
+       "       'hostages', 'hurricane', 'injured', 'injuries', 'injury',\n",
+       "       'inundated', 'inundation', 'landslide', 'lava', 'lightning',\n",
+       "       'loud%20bang', 'mass%20murder', 'mass%20murderer', 'massacre',\n",
+       "       'mayhem', 'meltdown', 'military', 'mudslide', 'natural%20disaster',\n",
+       "       'nuclear%20disaster', 'nuclear%20reactor', 'obliterate',\n",
+       "       'obliterated', 'obliteration', 'oil%20spill', 'outbreak',\n",
+       "       'pandemonium', 'panic', 'panicking', 'police', 'quarantine',\n",
+       "       'quarantined', 'radiation%20emergency', 'rainstorm', 'razed',\n",
+       "       'refugees', 'rescue', 'rescued', 'rescuers', 'riot', 'rioting',\n",
+       "       'rubble', 'ruin', 'sandstorm', 'screamed', 'screaming', 'screams',\n",
+       "       'seismic', 'sinkhole', 'sinking', 'siren', 'sirens', 'smoke',\n",
+       "       'snowstorm', 'storm', 'stretcher', 'structural%20failure',\n",
+       "       'suicide%20bomb', 'suicide%20bomber', 'suicide%20bombing', 'sunk',\n",
+       "       'survive', 'survived', 'survivors', 'terrorism', 'terrorist',\n",
+       "       'threat', 'thunder', 'thunderstorm', 'tornado', 'tragedy',\n",
+       "       'trapped', 'trauma', 'traumatised', 'trouble', 'tsunami', 'twister',\n",
+       "       'typhoon', 'upheaval', 'violent%20storm', 'volcano', 'war%20zone',\n",
+       "       'weapon', 'weapons', 'whirlwind', 'wild%20fires', 'wildfire',\n",
+       "       'windstorm', 'wounded', 'wounds', 'wreck', 'wreckage', 'wrecked'], dtype=object)"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tt.keywords"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Sloth",
+   "language": "python",
+   "name": "sloth"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.5.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
